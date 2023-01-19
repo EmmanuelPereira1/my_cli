@@ -2,8 +2,8 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:convert';
 
-class CustomFile implements File{
-final String yaml;
+class CustomFile implements File {
+  final String yaml;
   final File _file;
 
   CustomFile({required this.yaml}) : _file = File(yaml);
@@ -165,8 +165,7 @@ final String yaml;
   }
 
   @override
-  void setLastAccessedSync(DateTime time) {
-  }
+  void setLastAccessedSync(DateTime time) {}
 
   @override
   Future setLastModified(DateTime time) {
@@ -174,8 +173,7 @@ final String yaml;
   }
 
   @override
-  void setLastModifiedSync(DateTime time) {
-  }
+  void setLastModifiedSync(DateTime time) {}
 
   @override
   Future<FileStat> stat() {
@@ -191,26 +189,32 @@ final String yaml;
   Uri get uri => throw UnimplementedError();
 
   @override
-  Stream<FileSystemEvent> watch({int events = FileSystemEvent.all, bool recursive = false}) {
+  Stream<FileSystemEvent> watch(
+      {int events = FileSystemEvent.all, bool recursive = false}) {
     throw UnimplementedError();
   }
 
   @override
-  Future<File> writeAsBytes(List<int> bytes, {FileMode mode = FileMode.write, bool flush = false}) {
+  Future<File> writeAsBytes(List<int> bytes,
+      {FileMode mode = FileMode.write, bool flush = false}) {
     throw UnimplementedError();
   }
 
   @override
-  void writeAsBytesSync(List<int> bytes, {FileMode mode = FileMode.write, bool flush = false}) {
+  void writeAsBytesSync(List<int> bytes,
+      {FileMode mode = FileMode.write, bool flush = false}) {}
+
+  @override
+  Future<File> writeAsString(String contents,
+      {FileMode mode = FileMode.write,
+      Encoding encoding = utf8,
+      bool flush = true}) {
+    return _file.writeAsString(contents);
   }
 
   @override
-  Future<File> writeAsString(String contents, {FileMode mode = FileMode.write, Encoding encoding = utf8, bool flush = false}) {
-    throw UnimplementedError();
-  }
-
-  @override
-  void writeAsStringSync(String contents, {FileMode mode = FileMode.write, Encoding encoding = utf8, bool flush = false}) {
-  }
-
+  void writeAsStringSync(String contents,
+      {FileMode mode = FileMode.write,
+      Encoding encoding = utf8,
+      bool flush = false}) {}
 }
